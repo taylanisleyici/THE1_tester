@@ -7,8 +7,8 @@ s = time.time()
 
 
 if platform.system()=="Windows":
-    os.system("del output.txt")
-    os.system("del difference.txt")
+    os.system("del /f output.txt")
+    os.system("del /f difference.txt")
     path="./the1.exe"
 else:
     os.system("rm -f output.txt")
