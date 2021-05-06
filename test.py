@@ -1,6 +1,9 @@
 import os
 import time
+import platform
 
+os.system("rm -f output.txt")
+os.system("rm -f difference.txt")
 s = time.time()
 
 count = 0
@@ -16,7 +19,10 @@ for i in range(len(ilist)-1):
     xd = open("xd.txt", "w")
     xd.write(ilist[i])
     xd.close()
-    os.system('./the1.exe <xd.txt>> output.txt')
+    if platform.system()=="Windows":
+        os.system('./the1.exe <xd.txt>> output.txt')
+    else:
+        os.system('./the1 <xd.txt>> output.txt')
     o = open("output.txt", "a")
     o.write(" |\n")
     o.close()
