@@ -2,9 +2,18 @@ import os
 import time
 import platform
 
-os.system("rm -f output.txt")
-os.system("rm -f difference.txt")
+
 s = time.time()
+
+
+if platform.system()=="Windows":
+    os.system("del output.txt")
+    os.system("del difference.txt")
+    path="./the1.exe"
+else:
+    os.system("rm -f output.txt")
+    os.system("rm -f difference.txt")
+    path="./the1"
 
 count = 0
 
@@ -19,10 +28,7 @@ for i in range(len(ilist)-1):
     xd = open("xd.txt", "w")
     xd.write(ilist[i])
     xd.close()
-    if platform.system()=="Windows":
-        os.system('./the1.exe <xd.txt>> output.txt')
-    else:
-        os.system('./the1 <xd.txt>> output.txt')
+    os.system(f'{path} <xd.txt>> output.txt')
     o = open("output.txt", "a")
     o.write(" |\n")
     o.close()
@@ -54,6 +60,7 @@ e = time.time()
 print("Time: "+str(e-s)+" s")
 print("Grade: "+str(count)+"/"+str(len(outs)-1)+"\n")
 print("Check difference.txt for differences between expected output and your output. (If there are any.)")
+
 
 
 
